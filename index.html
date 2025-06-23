@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weak Goldbach Conjecture Scrollytelling</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
 </head>
 <body>
 <header>
   <h1>Goldbach Conjectures: Weak vs Strong</h1>
+  <p>Weak: \(N_{\text{odd}} = p_1 + p_2 + p_3\). Strong: \(N_{\text{even}} = p_1 + p_2\).</p>
+
   <p>Scroll to explore the story leading to the proof of the weak Goldbach Conjecture.</p>
 </header>
 
@@ -22,21 +25,22 @@
   <p>In a 1949 classroom the teacher declares Mathematics the queen of sciences and Goldbach its pearl. Classmates laugh—young Chen remains determined.</p>
 </section>
 
+
 <section id="scene3" class="scene">
   <h2>3. Christian Goldbach’s 1742 Journey &amp; Letter</h2>
-  <p>Goldbach proposes that every integer greater than 2 is the sum of three primes. Euler restates the strong form for even numbers.</p>
+  <p>Goldbach proposes that every integer >2 is \(n = p_1 + p_2 + p_3\). Euler restates the even case \(2k = p_1 + p_2\).</p>
 </section>
 
 <section id="scene4" class="scene">
   <h2>4. Counting Representations with h(N)</h2>
-  <p>Define h(N) as the number of unordered prime pairs p≤q with p+q=N. Example: h(4)=1, h(20)=2.</p>
+  <p>Define \(h(N)\) as the number of unordered prime pairs \(p \le q\) with \(p+q=N\). Example: \(h(4)=1\), \(h(20)=2\).</p>
+  <canvas id="primeTriangle" width="300" height="200"></canvas>
 </section>
 
 <section id="scene5" class="scene">
   <h2>5. Hilbert’s 1900 Challenge &amp; Counting H(n)</h2>
-  <p>At the 1900 ICM, Hilbert lists Goldbach among the 23 great problems, shifting focus to counting representations H(n).</p>
+  <p>At the 1900 ICM, Hilbert lists Goldbach among the 23 great problems, shifting focus to counting representations \(H(n)\).</p>
 </section>
-
 <section id="scene6" class="scene">
   <h2>6. Ramanujan’s Letter &amp; the Birth of the Circle Method</h2>
   <p>In 1913 Ramanujan’s letter inspires Hardy and Littlewood, leading to the circle method of analytic number theory.</p>
@@ -49,7 +53,7 @@
 
 <section id="scene8" class="scene">
   <h2>8. Chen Jingrun’s “1+2” Theorem &amp; Cultural Revolution</h2>
-  <p>In 1966 Chen shows that every large even number is a prime plus another prime or semiprime, all while facing hardship.</p>
+    <p>In 1966 Chen showed that every large even \(n\) satisfies \(n = p + (q \text{ or } q_1 q_2)\), all while facing hardship.</p>
 </section>
 
 <section id="scene9" class="scene">
@@ -67,6 +71,7 @@
   <p>The weak conjecture is proven, but the strong conjecture remains open. Will you find the missing pearl?</p>
 </section>
 
+<script src="prime_triangle.js"></script>
 <script src="agents.js"></script>
 </body>
 </html>
