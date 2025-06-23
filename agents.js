@@ -27,6 +27,9 @@ const agents = {
   scene4: {
     onEnter() {
       document.getElementById('scene4').classList.add('active');
+      if (typeof window !== 'undefined' && window.drawPrimeTriangle) {
+        window.drawPrimeTriangle();
+      }
     },
     onExit() {
       document.getElementById('scene4').classList.remove('active');
@@ -89,20 +92,25 @@ const agents = {
     }
   }
 };
+if (typeof window !== "undefined" && typeof IntersectionObserver !== "undefined") {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const agent = agents[id];
+      if (!agent) return;
+      if (entry.isIntersecting) {
+        agent.onEnter();
+      } else {
+        agent.onExit();
+      }
+    });
+  }, { threshold: 0.6 });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const id = entry.target.id;
-    const agent = agents[id];
-    if (!agent) return;
-    if (entry.isIntersecting) {
-      agent.onEnter();
-    } else {
-      agent.onExit();
-    }
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".scene").forEach(sec => observer.observe(sec));
   });
-}, { threshold: 0.6 });
+}
 
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.scene').forEach(sec => observer.observe(sec));
-});
+if (typeof module !== "undefined") {
+  module.exports = agents;
+}
